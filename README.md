@@ -1,3 +1,5 @@
+Here is the updated `README.md` file, reflecting the creation of two EC2 instances (webserver and database server), as well as detailed steps for setting up both servers:
+
 ---
 
 # **MySQL Installation and Configuration on Amazon Linux 2023 with Webserver Setup**
