@@ -5,8 +5,9 @@
 
 This guide outlines the steps to create two EC2 instances: one for the **Database Server** (MySQL) and another for the **Web Server**. We will also configure MySQL on the database server and Apache with PHP on the web server to connect and display data from the database.
 
-## **Reference**
+## **References**
 [How to Install MySQL on Amazon Linux 2023](https://muleif.medium.com/how-to-install-mysql-on-amazon-linux-2023-5d39afa5bf11)
+[How to Install Apache & PHP on Amazon Linux 2023](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Tutorials.WebServerDB.CreateWebServer.html)
 
 ---
 
