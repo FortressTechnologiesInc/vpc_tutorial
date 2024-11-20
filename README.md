@@ -25,6 +25,7 @@ This guide outlines the steps to create two EC2 instances: one for the **Databas
    - **Key Pair:** Select or create a key pair for SSH access.
    - **Network Settings:**
      - Select the default VPC or a custom one.
+     - Select Subnet (Private Subnet)
      - Open **port 3306** for MySQL access.
      - Set the **private IP** for communication between the web server and the database server.
 
@@ -41,6 +42,7 @@ This guide outlines the steps to create two EC2 instances: one for the **Databas
      - **Key Pair:** Select or create a key pair for SSH access.
      - **Network Settings:**
        - Select the default VPC or custom VPC.
+       - - Select Subnet (Public Subnet)
        - Open **port 22** (SSH) and **80** (HTTP) in the inbound rules.
        - Ensure that the **web server** can communicate with the **database server** via the private IP.
 
