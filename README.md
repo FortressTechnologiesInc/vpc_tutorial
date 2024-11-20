@@ -1,8 +1,10 @@
+
+
 ---
 
 # **MySQL Installation and Configuration on Amazon Linux 2023**
 
-This guide outlines the steps to install MySQL on Amazon Linux 2023, set up a database, and create a user and table.
+This guide outlines the steps to create an EC2 instance, install MySQL on Amazon Linux 2023, set up a database, and create a user and table.
 
 ## **Reference**
 [How to Install MySQL on Amazon Linux 2023](https://muleif.medium.com/how-to-install-mysql-on-amazon-linux-2023-5d39afa5bf11)
@@ -10,6 +12,35 @@ This guide outlines the steps to install MySQL on Amazon Linux 2023, set up a da
 ---
 
 ## **Steps**
+
+### **1. Create an EC2 Instance**
+1. Login to the AWS Management Console.
+2. Navigate to **EC2** and click on **Launch Instance**.
+3. **Instance Configuration**:
+   - **Name:** Database Server  
+   - **AMI:** Select **Amazon Linux 2023**.
+   - **Instance Type:** Select an instance type like `t2.micro` (free tier eligible).  
+   - **Key Pair:** Select or create a key pair for SSH access.  
+   - **Network Settings:**
+     - Select the default VPC or a custom one.
+     - Open **port 3306** to allow MySQL traffic.
+     - Use the private IP address of the web server for enhanced security.
+4. Click **Launch Instance** to start your database server.
+
+---
+
+### **2. Open Security Group for Port 3306**
+1. Navigate to **Security Groups** in the EC2 Dashboard.
+2. Find and edit the security group associated with your EC2 instance.
+3. Add an inbound rule:
+   - **Type:** MySQL/Aurora  
+   - **Protocol:** TCP  
+   - **Port Range:** 3306  
+   - **Source:** Private IP of your web server.
+
+---
+
+## **MySQL Installation**
 
 ### **1. Switch to Root User**
 ```bash
@@ -99,7 +130,7 @@ SELECT * FROM EMPLOYEES;
 
 ## **Notes**
 - Replace `Admin@12345` with a secure password of your choice.
-- Ensure port `3306` is open in your EC2 security group to allow remote connections.
+- Use private IPs and security groups for enhanced security.
 - Follow the reference link for additional troubleshooting or updates.
 
---- 
+---
