@@ -1,7 +1,7 @@
 
 ---
 
-# **MySQL Installation and Configuration on Amazon Linux 2023 with Webserver Setup**
+# **Connect Webserver with Database Server**
 
 This guide outlines the steps to create two EC2 instances: one for the **Database Server** (MySQL) and another for the **Web Server**. We will also configure MySQL on the database server and Apache with PHP on the web server to connect and display data from the database.
 
