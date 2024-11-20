@@ -1,5 +1,3 @@
-Here’s a `README.md` file for your setup:
-
 ---
 
 # **MySQL Installation and Configuration on Amazon Linux 2023**
@@ -105,5 +103,3 @@ SELECT * FROM EMPLOYEES;
 - Follow the reference link for additional troubleshooting or updates.
 
 --- 
-
-Save this file as `README.md`.
