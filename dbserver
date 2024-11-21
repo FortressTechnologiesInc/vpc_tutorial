@@ -24,7 +24,7 @@ sudo grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
 mysql_secure_installation
 
 # Current Password
-UEjbqo4o=gRK
+(Copy password)
 
 # New Password
 Admin@12345
