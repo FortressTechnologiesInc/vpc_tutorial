@@ -25,6 +25,7 @@ find /var/www -type f -exec sudo chmod 0664 {} \;
 # Now, ec2-user (and any future members of the apache group) can add, delete, and edit files in the Apache document root
 
 # Add content to the Apache web server that connects to your DB instance
+mkdir /var/www/inc
 vi /var/www/inc/dbinfo.inc
 <?php
 
