@@ -18,7 +18,7 @@ sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
 sudo dnf install mysql-community-server -y
 sudo systemctl start mysqld
 systemctl enable mysqld
-sudo systemctl enable mysqld
+sudo systemctl status mysqld
 sudo grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
 
 mysql_secure_installation
