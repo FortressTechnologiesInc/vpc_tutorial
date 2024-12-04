@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# =======================================================================
+# Ubuntu Server - Installing and Setting Up MySQL
+# =======================================================================
+echo "2. Installing MySQL on Ubuntu"
+
+# Update the package list
+sudo apt update
+
+# Install MySQL server
+sudo apt install mysql-server -y
+
+# Start MySQL service
+sudo systemctl start mysql
+
+# Enable MySQL to start on boot
+sudo systemctl enable mysql
+
+# Check MySQL status
+sudo systemctl status mysql
+
+# =======================================================================
+# Find MySQL Temporary Password
+# =======================================================================
+echo "3. Finding the temporary password for MySQL"
+# Find MySQL's temporary password
+sudo grep 'temporary password' /var/log/mysql/error.log | awk '{print $NF}'
+
+# =======================================================================
+# Secure MySQL Installation
+# =======================================================================
+echo "4. Running MySQL secure installation"
+# Run mysql_secure_installation
+sudo mysql_secure_installation
+
+# You will be prompted for:
+# 1. Current Password: Enter the temporary password retrieved earlier
+# 2. New Password: Enter a strong password, e.g., admin123
+# 3. Press Enter for other prompts or customize them as needed.
+
+# =======================================================================
+# MySQL User and Database Setup
+# =======================================================================
+echo "5. Creating MySQL User and Database"
+
+# Login to MySQL
+mysql -u root -p
+
+# Create a new user 'tutorial_user'
+CREATE USER 'tutorial_user'@'%' IDENTIFIED BY 'admin123';
+
+# Grant privileges to the new user
+GRANT ALL PRIVILEGES ON *.* TO 'tutorial_user'@'%';
+FLUSH PRIVILEGES;
+
+# Verify the user creation
+SELECT User, Host FROM mysql.user WHERE User = 'tutorial_user';
+
+# Create a new database 'sample'
+CREATE DATABASE sample;
+USE sample;
+
+# =======================================================================
+# Create a Table
+# =======================================================================
+echo "6. Creating Table 'EMPLOYEES' in Database 'sample'"
+
+CREATE TABLE EMPLOYEES (
+    ID INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    NAME VARCHAR(45),
+    ADDRESS VARCHAR(90)
+);
+
+# Show the tables in the current database
+SHOW TABLES;
+
+# =======================================================================
+# Insert Sample Data (optional)
+# =======================================================================
+echo "7. Inserting sample data into 'EMPLOYEES' table (optional)"
+
+# Example to insert data into the 'EMPLOYEES' table (run these queries in MySQL)
+# INSERT INTO EMPLOYEES (NAME, ADDRESS) VALUES ('John Doe', '123 Main St');
+# INSERT INTO EMPLOYEES (NAME, ADDRESS) VALUES ('Jane Smith', '456 Elm St');
+
+# =======================================================================
+# Query the Table
+# =======================================================================
+echo "8. Querying data from the 'EMPLOYEES' table"
+
+SELECT * FROM EMPLOYEES;
+
+# =======================================================================
+# Optional: Installing MySQL 8.0 on Ubuntu (if you need specific MySQL version)
+# =======================================================================
+echo "9. Installing MySQL 8.0 (optional, if specific version needed)"
+
+# Download MySQL APT repository package
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb
+
+# Install the repository package
+sudo dpkg -i mysql-apt-config_0.8.17-1_all.deb
+
+# Update APT package index
+sudo apt update
+
+# Install MySQL server
+sudo apt install mysql-server -y
+
+# =======================================================================
+# End of Instructions
+# =======================================================================
+echo "Setup is complete!"
